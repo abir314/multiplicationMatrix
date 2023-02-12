@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    
+
+    <script>
+        let html = document.getElementById('app');
+        let infoDiv ='';
+        let columnCount = 5;
+        //let multiplicationMatrix = [];
+        let inputValue = null;
+ 
+        
+
+        view();
+        function view(){
+          
+            html.innerHTML = `<h3>Multiplication Matrix</h3><br/>
+            <input type="range" min="0" max="100" step="1"  style="width:500px" value=${inputValue ? inputValue : 0} onchange="buildMatrix(this.value)"> &nbsp; 
+            Du har valgt ${inputValue? inputValue : 0}. <br/>
+            <div style="display: grid; grid-template-columns: repeat(${columnCount}, 40px);"> ${infoDiv}</div>`;
+  
+        }
+        function buildMatrix(number){
+            let num1 = number;
+            let num2 = number;
+            infoDiv ='';
+
+            columnCount = number;
+            inputValue = number;
+            for (let i = 1; i <= num1; i++ ){
+                for (let j=1; j<= num2; j++) {
+                    let number = i*j;
+                    infoDiv += `<div>${number}</div>`;
+                    }
+            }
+            view();
+        }
+    </script>
+</body>
+</html>
